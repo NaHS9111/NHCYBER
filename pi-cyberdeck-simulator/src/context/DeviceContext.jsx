@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { MISSIONS } from '../data/missions'
 
-const STORAGE_KEY = 'cyberdeck-sim:v1'
+// v2 : les appareils embarquent désormais leur configuration 3D complète.
+const STORAGE_KEY = 'cyberdeck-sim:v2'
 const DeviceCtx = createContext(null)
 
 function loadInitial() {

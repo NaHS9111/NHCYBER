@@ -4,7 +4,7 @@ const ITEMS = [
   { id: 'home', label: 'Accueil' },
   { id: 'builder', label: 'Assemblage' },
   { id: 'missions', label: 'Missions' },
-  { id: 'terminal', label: 'Terminal' },
+  { id: 'use', label: 'Utiliser' },
 ]
 
 export default function Nav({ view, setView, hasDevice }) {
@@ -17,7 +17,7 @@ export default function Nav({ view, setView, hasDevice }) {
         </div>
         <nav className="flex gap-1">
           {ITEMS.map((it) => {
-            const disabled = (it.id === 'missions' || it.id === 'terminal') && !hasDevice
+            const disabled = (it.id === 'missions' || it.id === 'use') && !hasDevice
             const active = view === it.id
             return (
               <button

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { DeviceProvider, useDevices } from './context/DeviceContext.jsx'
 import Home from './components/Home.jsx'
 import Builder from './components/Builder.jsx'
-import Terminal from './components/Terminal.jsx'
+import UseDevice from './components/UseDevice.jsx'
 import Missions from './components/Missions.jsx'
 import Nav from './components/Nav.jsx'
 
@@ -11,20 +11,20 @@ function Shell() {
   const [activeMissionId, setActiveMissionId] = useState(null)
   const { activeDevice } = useDevices()
 
-  const goToTerminal = (missionId = null) => {
+  const goToUse = (missionId = null) => {
     setActiveMissionId(missionId)
-    setView('terminal')
+    setView('use')
   }
 
   return (
-    <div className="min-h-screen bg-void crt-grid text-term font-mono flex flex-col">
+    <div className="h-screen bg-void crt-grid text-term font-mono flex flex-col overflow-hidden">
       <Nav view={view} setView={setView} hasDevice={!!activeDevice} />
-      <main className="flex-1 flex flex-col">
-        {view === 'home' && <Home onBuild={() => setView('builder')} onTerminal={() => goToTerminal(null)} onMissions={() => setView('missions')} />}
+      <main className="flex-1 flex flex-col min-h-0 overflow-y-auto">
+        {view === 'home' && <Home onBuild={() => setView('builder')} onUse={() => goToUse(null)} onMissions={() => setView('missions')} />}
         {view === 'builder' && <Builder onDone={() => setView('home')} />}
-        {view === 'missions' && <Missions onLaunch={(id) => goToTerminal(id)} />}
-        {view === 'terminal' && (
-          <Terminal missionId={activeMissionId} onExitMission={() => setActiveMissionId(null)} onBackHome={() => setView('home')} />
+        {view === 'missions' && <Missions onLaunch={(id) => goToUse(id)} />}
+        {view === 'use' && (
+          <UseDevice missionId={activeMissionId} onExitMission={() => setActiveMissionId(null)} onBackHome={() => setView('home')} />
         )}
       </main>
     </div>
