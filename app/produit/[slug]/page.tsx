@@ -3,7 +3,11 @@ import Link from "next/link";
 import PagePlaceholder from "@/components/PagePlaceholder";
 import OrbitsSymbol from "@/components/OrbitsSymbol";
 import WaitlistForm from "@/components/WaitlistForm";
-import { getProduct } from "@/lib/products";
+import { getCategory, getProduct, PRODUCTS } from "@/lib/products";
+
+export function generateStaticParams() {
+  return PRODUCTS.map((p) => ({ slug: p.slug }));
+}
 
 export async function generateMetadata({
   params,
@@ -27,6 +31,8 @@ export default function ProduitPage({ params }: { params: { slug: string } }) {
     );
   }
 
+  const category = getCategory(product.category);
+
   return (
     <section className="px-6 pt-32 pb-24 sm:px-10">
       <div className="mx-auto grid max-w-5xl gap-12 lg:grid-cols-2">
@@ -34,15 +40,20 @@ export default function ProduitPage({ params }: { params: { slug: string } }) {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={product.image}
-            alt={`${product.name} — ${product.placement}`}
+            alt={product.name}
             className="h-full w-full object-cover"
           />
         </div>
 
         <div className="flex flex-col justify-center">
-          <p className="mb-3 text-xs uppercase tracking-[0.4em] text-gris">
-            De plomb à or
-          </p>
+          <div className="mb-3 flex items-center gap-3">
+            <p className="text-xs uppercase tracking-[0.4em] text-gris">
+              {category?.label ?? product.category}
+            </p>
+            <span className="text-[10px] uppercase tracking-[0.2em] text-gris/70">
+              {product.ref}
+            </span>
+          </div>
           <h1 className="font-wordmark text-3xl font-semibold text-ecru sm:text-4xl">
             {product.name}
           </h1>
@@ -54,37 +65,31 @@ export default function ProduitPage({ params }: { params: { slug: string } }) {
               aria-hidden="true"
             />
             <span className="text-xs uppercase tracking-[0.15em] text-pierre">
-              {product.colorway}
+              {product.coloris}
             </span>
           </div>
 
-          <p className="mt-6 text-sm leading-relaxed text-pierre">
-            {product.description}
-          </p>
-
           <div className="mt-8 flex items-start gap-4 border-t border-charbon pt-6">
             <OrbitsSymbol size={40} animated={false} parallax={false} />
-            <dl className="text-sm">
-              <div className="flex gap-2">
-                <dt className="text-gris">Signe&nbsp;:</dt>
-                <dd className="text-ecru">{product.markVariant}</dd>
-              </div>
-              <div className="mt-1 flex gap-2">
-                <dt className="text-gris">Emplacement&nbsp;:</dt>
-                <dd className="text-ecru">{product.placement}</dd>
-              </div>
+            <dl className="w-full text-sm">
+              {product.specs.map((spec) => (
+                <div key={spec.label} className="mt-1 flex gap-2 first:mt-0">
+                  <dt className="shrink-0 text-gris">{spec.label}&nbsp;:</dt>
+                  <dd className="text-ecru">{spec.value}</dd>
+                </div>
+              ))}
             </dl>
           </div>
 
           <p className="mt-8 text-xs uppercase tracking-[0.3em] text-gris">
-            Édition limitée — pas de vente permanente
+            {product.rarity}
           </p>
           <div className="mt-4">
             <WaitlistForm />
           </div>
 
           <Link
-            href="/collections/de-plomb-a-or"
+            href={`/collections/${product.category}`}
             className="mt-8 text-xs uppercase tracking-[0.25em] text-pierre hover:text-or"
           >
             ← Retour à la collection
