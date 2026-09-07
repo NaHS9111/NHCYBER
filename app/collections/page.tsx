@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import OrbitsSymbol from "@/components/OrbitsSymbol";
+import ProductPlate from "@/components/ProductPlate";
 import Reveal from "@/components/Reveal";
 import { CATEGORIES, getProductsByCategory } from "@/lib/products";
 
@@ -37,12 +38,10 @@ export default function CollectionsPage() {
                 >
                   {cover && (
                     <div className="aspect-[4/5] w-full overflow-hidden bg-charbon sm:w-2/5">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={cover.image}
-                        alt={category.label}
-                        className="h-full w-full object-cover transition-transform duration-700 ease-alchemy group-hover:scale-[1.03]"
-                        loading="lazy"
+                      <ProductPlate
+                        product={cover}
+                        animated={false}
+                        className="transition-transform duration-700 ease-alchemy group-hover:scale-[1.03]"
                       />
                     </div>
                   )}

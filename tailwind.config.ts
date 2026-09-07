@@ -21,6 +21,7 @@ const config: Config = {
         serif: ["var(--font-serif)", "Georgia", "serif"],
         wordmark: ["var(--font-wordmark)", "Georgia", "serif"],
         sans: ["var(--font-sans)", "Helvetica", "Arial", "sans-serif"],
+        arabic: ["Amiri", "serif"],
       },
       transitionTimingFunction: {
         alchemy: "cubic-bezier(0.22, 1, 0.36, 1)",

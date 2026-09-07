@@ -7,6 +7,17 @@ export type Category = {
   tagline: string;
 };
 
+export type PlateMark = "orbit" | "lockup" | "arabic" | "none";
+
+export type Plate = {
+  mark: PlateMark;
+  /** Position as a percentage of the plate, matching the tech pack's real branding spot. */
+  top: string;
+  left: string;
+  scale: number;
+  rotate: number;
+};
+
 export type Product = {
   slug: string;
   ref: string;
@@ -16,7 +27,7 @@ export type Product = {
   swatch: string;
   rarity: string;
   specs: SpecRow[];
-  image: string;
+  plate: Plate;
 };
 
 export const CATEGORIES: Category[] = [
@@ -80,8 +91,7 @@ export const PRODUCTS: Product[] = [
       { label: "Coloris", value: "Noir profond, charbon, écru" },
       { label: "Rareté", value: "Permanent — réassort continu" },
     ],
-    image:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3HilQQULSm6zADcVs21TPiaVhE0/hf_20260907_185111_fe9aa245-ae25-41d5-95fe-eab8cb52bd5a.png",
+    plate: { mark: "orbit", top: "38%", left: "42%", scale: 0.5, rotate: -6 },
   },
   {
     slug: "jogger-technique",
@@ -98,8 +108,7 @@ export const PRODUCTS: Product[] = [
       { label: "Coloris", value: "Charbon, pierre" },
       { label: "Rareté", value: "Permanent — réassort continu" },
     ],
-    image:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3HilQQULSm6zADcVs21TPiaVhE0/hf_20260907_185111_049adf4d-c487-4b40-b026-7125dcd265ec.png",
+    plate: { mark: "orbit", top: "68%", left: "38%", scale: 0.5, rotate: 4 },
   },
   {
     slug: "hoodie-technique",
@@ -116,8 +125,7 @@ export const PRODUCTS: Product[] = [
       { label: "Coloris", value: "Noir profond, charbon" },
       { label: "Rareté", value: "Permanent — réassort continu" },
     ],
-    image:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3HilQQULSm6zADcVs21TPiaVhE0/hf_20260907_185111_990e6ea4-350a-4417-bf0e-2ac7477adf86.png",
+    plate: { mark: "orbit", top: "42%", left: "50%", scale: 0.75, rotate: 0 },
   },
   {
     slug: "overshirt-technique",
@@ -134,8 +142,7 @@ export const PRODUCTS: Product[] = [
       { label: "Coloris", value: "Pierre, écru" },
       { label: "Rareté", value: "Saisonnière — 2 sorties par an" },
     ],
-    image:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3HilQQULSm6zADcVs21TPiaVhE0/hf_20260907_185111_4a8eda55-cd9b-4c38-b913-b468bf45a241.png",
+    plate: { mark: "orbit", top: "22%", left: "50%", scale: 0.35, rotate: 0 },
   },
 
   // Pièce rare — Réaliser l'impossible
@@ -154,8 +161,7 @@ export const PRODUCTS: Product[] = [
       { label: "Coloris", value: "Noir profond uniquement" },
       { label: "Rareté", value: "150 exemplaires numérotés par sortie, 1 sortie par an" },
     ],
-    image:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3HilQQULSm6zADcVs21TPiaVhE0/hf_20260907_185111_1c595b5c-2dc4-48e1-be8d-004414305104.png",
+    plate: { mark: "none", top: "50%", left: "50%", scale: 1, rotate: 0 },
   },
   {
     slug: "veste-architecturale",
@@ -172,8 +178,7 @@ export const PRODUCTS: Product[] = [
       { label: "Coloris", value: "Charbon" },
       { label: "Rareté", value: "80 exemplaires numérotés, édition unique" },
     ],
-    image:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3HilQQULSm6zADcVs21TPiaVhE0/hf_20260907_185111_e35bbe4a-8230-4c2d-acda-d02c7ecdf6c3.png",
+    plate: { mark: "none", top: "50%", left: "50%", scale: 1, rotate: 0 },
   },
 
   // Maroquinerie
@@ -192,8 +197,7 @@ export const PRODUCTS: Product[] = [
       { label: "Coloris", value: "Noir profond, pierre, écru" },
       { label: "Rareté", value: "Permanent, production limitée mensuelle" },
     ],
-    image:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3HilQQULSm6zADcVs21TPiaVhE0/hf_20260907_185111_edbdad77-4578-40db-ba6e-eca2a14c216f.png",
+    plate: { mark: "orbit", top: "35%", left: "50%", scale: 0.6, rotate: 0 },
   },
   {
     slug: "porte-cartes",
@@ -210,8 +214,7 @@ export const PRODUCTS: Product[] = [
       { label: "Coloris", value: "Noir profond, charbon, pierre" },
       { label: "Rareté", value: "Permanent" },
     ],
-    image:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3HilQQULSm6zADcVs21TPiaVhE0/hf_20260907_185111_7c259eff-9d17-4a50-bfb6-60b9fe46e232.png",
+    plate: { mark: "orbit", top: "78%", left: "78%", scale: 0.35, rotate: 0 },
   },
   {
     slug: "ceinture",
@@ -228,8 +231,7 @@ export const PRODUCTS: Product[] = [
       { label: "Coloris", value: "Noir profond, charbon" },
       { label: "Rareté", value: "Permanent" },
     ],
-    image:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3HilQQULSm6zADcVs21TPiaVhE0/hf_20260907_185111_8d4dafeb-3444-4ee0-8397-eccff8f302fe.png",
+    plate: { mark: "orbit", top: "50%", left: "50%", scale: 0.7, rotate: 0 },
   },
 
   // Accessoires
@@ -248,8 +250,7 @@ export const PRODUCTS: Product[] = [
       { label: "Coloris", value: "Noir/or, écru/or, pierre/charbon" },
       { label: "Rareté", value: "Permanent, 3 motifs tournants par an" },
     ],
-    image:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3HilQQULSm6zADcVs21TPiaVhE0/hf_20260907_185111_d5fd2dbf-1253-422b-8efb-5e48c0e841d0.png",
+    plate: { mark: "arabic", top: "50%", left: "50%", scale: 1.3, rotate: 0 },
   },
   {
     slug: "bracelet-jonc",
@@ -266,8 +267,7 @@ export const PRODUCTS: Product[] = [
       { label: "Coloris", value: "Or antique uniquement" },
       { label: "Rareté", value: "Permanent" },
     ],
-    image:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3HilQQULSm6zADcVs21TPiaVhE0/hf_20260907_185111_3de68a29-1dac-4df1-85c3-ccded1ed84e1.png",
+    plate: { mark: "arabic", top: "48%", left: "56%", scale: 0.85, rotate: -12 },
   },
 
   // Les objets de consécration
@@ -286,8 +286,7 @@ export const PRODUCTS: Product[] = [
       { label: "Gravure", value: "Numéro de série + date du cap gravés au dos, sur demande" },
       { label: "Rareté", value: "Sur commande uniquement, non catalogué" },
     ],
-    image:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3HilQQULSm6zADcVs21TPiaVhE0/hf_20260907_185111_5551a035-0998-4904-b3da-022c2373e43a.png",
+    plate: { mark: "orbit", top: "50%", left: "50%", scale: 0.55, rotate: 0 },
   },
   {
     slug: "stylo-plume",
@@ -303,8 +302,7 @@ export const PRODUCTS: Product[] = [
       { label: "Gravure", value: "Sceau gravé sur le capuchon, initiales sur demande sur le corps" },
       { label: "Rareté", value: "Sur commande uniquement, non catalogué" },
     ],
-    image:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3HilQQULSm6zADcVs21TPiaVhE0/hf_20260907_185158_f5dc3a70-ddee-403e-903c-5c7c893a93e6.png",
+    plate: { mark: "orbit", top: "20%", left: "50%", scale: 0.4, rotate: 0 },
   },
   {
     slug: "pendentif-tech",
@@ -320,8 +318,7 @@ export const PRODUCTS: Product[] = [
       { label: "Fonction", value: "Clé USB haute capacité intégrée — pour archiver le récit du cap franchi" },
       { label: "Rareté", value: "Sur commande uniquement, non catalogué" },
     ],
-    image:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3HilQQULSm6zADcVs21TPiaVhE0/hf_20260907_185158_03a28d71-af5c-4b38-95c1-1be8ac7a5ad7.png",
+    plate: { mark: "lockup", top: "50%", left: "50%", scale: 0.9, rotate: 0 },
   },
   {
     slug: "parfum-de-seuil",
@@ -337,8 +334,7 @@ export const PRODUCTS: Product[] = [
       { label: "Contenance", value: "50ml, non rechargeable — pensé pour durer le temps d'un seuil, pas d'une routine" },
       { label: "Rareté", value: "Édition très limitée, une seule composition à la fois" },
     ],
-    image:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3HilQQULSm6zADcVs21TPiaVhE0/hf_20260907_185158_f8c22866-a43f-410e-b49c-eb807b17eccf.png",
+    plate: { mark: "orbit", top: "18%", left: "50%", scale: 0.4, rotate: 0 },
   },
 ];
 

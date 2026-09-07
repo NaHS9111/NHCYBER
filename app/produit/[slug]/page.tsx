@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PagePlaceholder from "@/components/PagePlaceholder";
 import OrbitsSymbol from "@/components/OrbitsSymbol";
+import ProductPlate from "@/components/ProductPlate";
 import WaitlistForm from "@/components/WaitlistForm";
 import { getCategory, getProduct, PRODUCTS } from "@/lib/products";
 
@@ -37,12 +38,7 @@ export default function ProduitPage({ params }: { params: { slug: string } }) {
     <section className="px-6 pt-32 pb-24 sm:px-10">
       <div className="mx-auto grid max-w-5xl gap-12 lg:grid-cols-2">
         <div className="aspect-[4/5] w-full overflow-hidden bg-charbon">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={product.image}
-            alt={product.name}
-            className="h-full w-full object-cover"
-          />
+          <ProductPlate product={product} />
         </div>
 
         <div className="flex flex-col justify-center">

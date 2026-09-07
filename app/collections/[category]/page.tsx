@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import OrbitsSymbol from "@/components/OrbitsSymbol";
+import ProductPlate from "@/components/ProductPlate";
 import Reveal from "@/components/Reveal";
 import { CATEGORIES, getCategory, getProductsByCategory } from "@/lib/products";
 
@@ -48,12 +49,9 @@ export default function CategoryPage({ params }: { params: { category: string } 
                 className="group flex h-full flex-col border border-charbon transition-colors duration-500 hover:border-or/60"
               >
                 <div className="aspect-[4/5] w-full overflow-hidden bg-charbon">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="h-full w-full object-cover transition-transform duration-700 ease-alchemy group-hover:scale-[1.03]"
-                    loading="lazy"
+                  <ProductPlate
+                    product={product}
+                    className="transition-transform duration-700 ease-alchemy group-hover:scale-[1.03]"
                   />
                 </div>
                 <div className="flex flex-1 flex-col gap-2 p-6">

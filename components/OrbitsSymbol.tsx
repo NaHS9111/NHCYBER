@@ -1,11 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { motion, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
 
 type OrbitsSymbolProps = {
   size?: number;
   className?: string;
+  /** Stroke/fill color. Defaults to brand gold; pass a contrasting color on light or gold backgrounds. */
+  color?: string;
   /** Enables slow continuous rotation of the three orbits. */
   animated?: boolean;
   /** Enables desktop mouse-parallax tilt. Ignored if reduced motion is on. */
@@ -27,6 +29,7 @@ type OrbitsSymbolProps = {
 export default function OrbitsSymbol({
   size = 96,
   className = "",
+  color = "#B8934A",
   animated = true,
   parallax = true,
   gyroscope = false,
@@ -34,6 +37,7 @@ export default function OrbitsSymbol({
 }: OrbitsSymbolProps) {
   const prefersReducedMotion = useReducedMotion();
   const wrapRef = useRef<HTMLDivElement>(null);
+  const glowId = `nucleus-glow-${useId().replace(/[:]/g, "")}`;
 
   const tiltX = useMotionValue(0);
   const tiltY = useMotionValue(0);
@@ -97,9 +101,9 @@ export default function OrbitsSymbol({
         className="[transform-style:preserve-3d]"
       >
         <defs>
-          <radialGradient id="nucleus-glow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#B8934A" stopOpacity="0.9" />
-            <stop offset="100%" stopColor="#B8934A" stopOpacity="0" />
+          <radialGradient id={glowId} cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor={color} stopOpacity="0.9" />
+            <stop offset="100%" stopColor={color} stopOpacity="0" />
           </radialGradient>
         </defs>
 
@@ -116,7 +120,7 @@ export default function OrbitsSymbol({
               ry="34"
               transform="rotate(0)"
               fill="none"
-              stroke="#B8934A"
+              stroke={color}
               strokeWidth="2.2"
             />
           </g>
@@ -139,7 +143,7 @@ export default function OrbitsSymbol({
               ry="34"
               transform="rotate(60)"
               fill="none"
-              stroke="#B8934A"
+              stroke={color}
               strokeWidth="2.2"
             />
           </g>
@@ -156,14 +160,14 @@ export default function OrbitsSymbol({
               ry="34"
               transform="rotate(120)"
               fill="none"
-              stroke="#B8934A"
+              stroke={color}
               strokeWidth="2.2"
             />
           </g>
 
-          {/* gold nucleus */}
-          <circle r="20" fill="url(#nucleus-glow)" />
-          <circle r="8" fill="#B8934A" />
+          {/* nucleus */}
+          <circle r="20" fill={`url(#${glowId})`} />
+          <circle r="8" fill={color} />
         </g>
       </motion.svg>
     </div>
