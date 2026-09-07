@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  min-height: 100dvh;
+}
+
+.tracking-brand {
+  letter-spacing: 0.02em;
+}
+
+.tracking-wordmark {
+  letter-spacing: 0.06em;
+}
+
+/* fine gold hairline used across sections instead of hard borders */
+.hairline {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(184, 147, 74, 0.5),
+    transparent
+  );
+  height: 1px;
+}
