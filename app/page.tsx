@@ -47,7 +47,7 @@ export default function HomePage() {
             les nouveaux alchimistes — الخيميائيون الجدد
           </p>
 
-          <h1 className="font-serif text-4xl font-light tracking-wordmark text-ecru sm:text-6xl">
+          <h1 className="font-wordmark text-4xl font-semibold tracking-tight text-ecru sm:text-6xl">
             the new al-khīmist
           </h1>
 

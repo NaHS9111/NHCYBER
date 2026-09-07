@@ -20,8 +20,6 @@ type OrbitsSymbolProps = {
   hoverOrbit?: boolean;
 };
 
-const SECONDARY_DOTS = [0, 60, 120, 180, 240, 300];
-
 /**
  * Brand mark: three intersecting orbits (evoking superposed quantum paths)
  * around a gold nucleus — a nod to the atomic symbol of gold (Au, 79).
@@ -100,8 +98,7 @@ export default function OrbitsSymbol({
       >
         <defs>
           <radialGradient id="nucleus-glow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#F2EDE3" />
-            <stop offset="35%" stopColor="#B8934A" />
+            <stop offset="0%" stopColor="#B8934A" stopOpacity="0.9" />
             <stop offset="100%" stopColor="#B8934A" stopOpacity="0" />
           </radialGradient>
         </defs>
@@ -120,8 +117,7 @@ export default function OrbitsSymbol({
               transform="rotate(0)"
               fill="none"
               stroke="#B8934A"
-              strokeWidth="0.75"
-              strokeOpacity="0.55"
+              strokeWidth="2.2"
             />
           </g>
 
@@ -143,9 +139,8 @@ export default function OrbitsSymbol({
               ry="34"
               transform="rotate(60)"
               fill="none"
-              stroke="#C9BDA4"
-              strokeWidth="0.75"
-              strokeOpacity="0.5"
+              stroke="#B8934A"
+              strokeWidth="2.2"
             />
           </g>
 
@@ -162,31 +157,13 @@ export default function OrbitsSymbol({
               transform="rotate(120)"
               fill="none"
               stroke="#B8934A"
-              strokeWidth="0.75"
-              strokeOpacity="0.4"
+              strokeWidth="2.2"
             />
           </g>
 
-          {/* secondary points — stylised intersections */}
-          {SECONDARY_DOTS.map((angle) => {
-            const rad = (angle * Math.PI) / 180;
-            const x = Math.cos(rad) * 55;
-            const y = Math.sin(rad) * 22;
-            return (
-              <circle
-                key={angle}
-                cx={x}
-                cy={y}
-                r="1.6"
-                fill="#C9BDA4"
-                fillOpacity="0.7"
-              />
-            );
-          })}
-
           {/* gold nucleus */}
-          <circle r="14" fill="url(#nucleus-glow)" />
-          <circle r="3.2" fill="#B8934A" />
+          <circle r="20" fill="url(#nucleus-glow)" />
+          <circle r="8" fill="#B8934A" />
         </g>
       </motion.svg>
     </div>

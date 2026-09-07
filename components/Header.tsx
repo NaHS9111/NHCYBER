@@ -19,7 +19,7 @@ export default function Header() {
   return (
     <header className="absolute inset-x-0 top-0 z-40">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 sm:px-10">
-        <Logo size={36} />
+        <Logo symbolSize={44} />
 
         <nav className="hidden items-center gap-8 md:flex">
           {NAV_LINKS.map((link) => {
