@@ -214,7 +214,7 @@ export const PRODUCTS: Product[] = [
       { label: "Coloris", value: "Noir profond, charbon, pierre" },
       { label: "Rareté", value: "Permanent" },
     ],
-    plate: { mark: "orbit", top: "78%", left: "78%", scale: 0.35, rotate: 0 },
+    plate: { mark: "orbit", top: "58%", left: "66%", scale: 0.3, rotate: 0 },
   },
   {
     slug: "ceinture",
@@ -231,7 +231,7 @@ export const PRODUCTS: Product[] = [
       { label: "Coloris", value: "Noir profond, charbon" },
       { label: "Rareté", value: "Permanent" },
     ],
-    plate: { mark: "orbit", top: "50%", left: "50%", scale: 0.7, rotate: 0 },
+    plate: { mark: "orbit", top: "50%", left: "81%", scale: 0.3, rotate: 0 },
   },
 
   // Accessoires

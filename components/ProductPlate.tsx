@@ -4,6 +4,7 @@ import { useId } from "react";
 import OrbitsSymbol from "./OrbitsSymbol";
 import AuTag from "./AuTag";
 import ArabicMark from "./ArabicMark";
+import ProductIllustration from "./ProductIllustration";
 import type { Product } from "@/lib/products";
 import { pickMarkColor } from "@/lib/color";
 
@@ -47,6 +48,12 @@ export default function ProductPlate({ product, className = "", animated = true 
             "radial-gradient(120% 90% at 50% 40%, transparent 40%, rgba(13,13,13,0.28) 100%)",
         }}
         aria-hidden="true"
+      />
+
+      <ProductIllustration
+        slug={product.slug}
+        color={markColor}
+        className="absolute inset-0 h-full w-full p-10"
       />
 
       {plate.mark !== "none" && (
