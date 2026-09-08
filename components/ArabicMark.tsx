@@ -69,7 +69,7 @@ export default function ArabicMark({ size = 96, className = "", color = "#B8934A
       <circle cx="120" cy="120" r="22" fill={`url(#${glowId})`} />
       <circle cx="120" cy="120" r="8" fill={color} />
 
-      <text fontFamily="Amiri, serif" fontSize="26" fill={color} letterSpacing="0.5">
+      <text className="font-arabic" fontSize="26" fill={color} letterSpacing="0.5">
         <textPath href={`#${pathId}`} startOffset="27%">
           الجديد
         </textPath>

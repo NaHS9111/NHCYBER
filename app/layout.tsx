@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Fraunces, Inter } from "next/font/google";
+import { Amiri, Cormorant_Garamond, Fraunces, Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "./globals.css";
@@ -27,6 +27,14 @@ const sans = Inter({
   display: "swap",
 });
 
+// Arabic calligraphic mark used by ArabicMark ("الجديد" riding the orbit path).
+const arabic = Amiri({
+  subsets: ["arabic"],
+  weight: ["700"],
+  variable: "--font-arabic",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: {
     default: "the new al-khīmist — de plomb à or",
@@ -43,7 +51,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" className={`${serif.variable} ${wordmark.variable} ${sans.variable}`}>
+    <html
+      lang="fr"
+      className={`${serif.variable} ${wordmark.variable} ${sans.variable} ${arabic.variable}`}
+    >
       <body className="bg-noir text-ecru font-sans antialiased selection:bg-or/30 selection:text-ecru">
         <Header />
         <main>{children}</main>
